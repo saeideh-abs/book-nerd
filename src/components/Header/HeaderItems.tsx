@@ -12,7 +12,7 @@ export default function HeaderItems({ items }: HeaderItemsProps) {
   const pathname = usePathname()
 
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex items-center gap-6 h-14">
       {items.map((item, index) => (
         <React.Fragment key={index}>
           <HeaderItem item={item} active={item.route === pathname} />

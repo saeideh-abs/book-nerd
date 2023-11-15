@@ -2,9 +2,10 @@ import { Metadata } from 'next'
 import GlobalStyles from '@/styles/GlobalStyles'
 import '@/styles/tailwind.css'
 import { Header, HeaderItemsType } from '@/components'
+import HeaderBanner from '@/components/Header/HeaderBanner'
 
 export const metadata: Metadata = {
-  title: 'Twin',
+  title: 'Book Nerd',
   description: '',
 }
 
@@ -23,7 +24,12 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <GlobalStyles />
-        <Header items={headerItems} />
+        <Header items={headerItems}>
+          <HeaderBanner
+            title="ipsum dolor si"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu."
+          />
+        </Header>
         <div className="flex flex-col">{children}</div>
       </body>
     </html>

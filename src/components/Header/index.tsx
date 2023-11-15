@@ -7,11 +7,14 @@ export interface HeaderProps {
   items: HeaderItemType[]
 }
 
-export function Header({ items }: HeaderProps) {
+export function Header({ items, children }: PropsWithChildren & HeaderProps) {
   return (
-    <Container>
-      <HeaderItems items={items} />
-    </Container>
+    <div>
+      <Container>
+        <HeaderItems items={items} />
+      </Container>
+      {children}
+    </div>
   )
 }
 
