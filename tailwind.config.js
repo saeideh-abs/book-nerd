@@ -5,6 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      padding: {
+        layoutX: '4rem'
+      },
+      screens: {
+        '3xl': '1792px',
+        '4xl': '2048px',
+      },
       colors: {
         primary: {
           50: '#e8ecef',

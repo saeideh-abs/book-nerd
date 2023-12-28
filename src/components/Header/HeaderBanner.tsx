@@ -12,12 +12,16 @@ export default function HeaderBanner({
   description,
 }: HeaderBannerProps) {
   return (
-    <div className="relative flex w-full px-14 py-6 bg-gradient-to-r text-primary-500 from-secondary-100 to-80% to-[#F5FFFE]">
+    <div className="relative flex w-full px-layoutX py-6 bg-gradient-to-r text-primary-500 from-secondary-100 to-70% to-[#F5FFFE]">
       <TextWrapper>
         <Typography variant="displayLgMed" className="mb-4">
           {startCase(title)}
         </Typography>
-        <Typography variant="textXlMed" component="p">
+        <Typography
+          variant="textXlMed"
+          component="p"
+          className="whitespace-pre-line"
+        >
           {description}
         </Typography>
       </TextWrapper>

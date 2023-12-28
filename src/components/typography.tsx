@@ -60,14 +60,22 @@ export interface TypographyProps {
   // | "subtitle"
   // | "body2"
   variant: keyof typeof style
+  primary?: boolean
   className?: string
 }
 
 export const Typography = ({
   component: Comp = 'div',
   variant,
+  primary,
   className,
   children,
 }: PropsWithChildren<TypographyProps>) => {
-  return <Comp className={clsx(style[variant], className)}>{children}</Comp>
+  return (
+    <Comp
+      className={clsx(style[variant], primary && 'text-primary-500', className)}
+    >
+      {children}
+    </Comp>
+  )
 }

@@ -23,14 +23,18 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <GlobalStyles />
-        <Header items={headerItems}>
-          <HeaderBanner
-            title="ipsum dolor si"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu."
-          />
-        </Header>
-        <div className="flex flex-col">{children}</div>
+        <div className="max-w-[2500px] m-auto bg-[#f0f8ff96] ">
+          <GlobalStyles />
+          <Header items={headerItems}>
+            <HeaderBanner
+              title="ipsum dolor si"
+              description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed eu feugiat amet, libero ipsum enim pharetra hac. 
+            Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.`}
+            />
+          </Header>
+          <div className="flex flex-col">{children}</div>
+        </div>
       </body>
     </html>
   )
