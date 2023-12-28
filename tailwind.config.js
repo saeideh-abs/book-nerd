@@ -24,6 +24,7 @@ module.exports = {
           700: '#102d43',
           800: '#0d2334',
           900: '#0a1a28',
+          contrast: 'white',
         },
         secondary: {
           50: '#FAEFEF',
@@ -36,6 +37,7 @@ module.exports = {
           700: '#a83c2a',
           800: '#822f20',
           900: '#642419',
+          contrast: 'white',
         }
       },
     },

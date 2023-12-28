@@ -1,4 +1,4 @@
-import { Typography } from '@/components/typography'
+import { Typography } from '@/components'
 import Image from 'next/image'
 
 export interface BoxProps {
@@ -8,7 +8,7 @@ export interface BoxProps {
 
 export default function Box({ address, title }: BoxProps) {
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full hover:opacity-60 hover:cursor-pointer">
       <Image
         src={address}
         width="0"
@@ -21,7 +21,7 @@ export default function Box({ address, title }: BoxProps) {
       <Typography
         variant="displayXsMed"
         component="h3"
-        className="absolute text-white -translate-x-1/2 cursor-pointer bottom-6 left-1/2"
+        className="absolute text-white -translate-x-1/2 cursor-pointer w-max bottom-6 left-1/2"
       >
         {title}
       </Typography>
