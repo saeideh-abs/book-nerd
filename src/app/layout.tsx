@@ -23,7 +23,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="max-w-[2500px] h-screen m-auto bg-[#f0f8ff96]">
+        <div className="max-w-[2500px] h-full bg-[#f0f8ff96]">
           <GlobalStyles />
           <Header items={headerItems}>
             <HeaderBanner

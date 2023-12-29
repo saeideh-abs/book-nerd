@@ -1,4 +1,3 @@
-'use client'
 import { cn } from '@/utils'
 import { ButtonHTMLAttributes, PropsWithChildren, forwardRef } from 'react'
 
@@ -27,6 +26,9 @@ export const Button = forwardRef<
     variant === 'outlined' && 'border bg-transparent',
     variant === 'solid' && 'font-medium',
   )
+
+  const disableStyle = `disabled:opacity-50 disabled:cursor-not-allowed`
+
   const sizeStyle = {
     sm: `px-6 py-2 text-sm`,
     md: 'px-8 py-3 text-normal',
@@ -39,12 +41,13 @@ export const Button = forwardRef<
       secondary: `text-secondary-500 hover:text-secondary-600`,
     },
     solid: {
-      primary: `bg-primary-500 text-primary-contrast hover:bg-primary-600`,
-      secondary: `bg-secondary-500 text-secondary-contrast hover:bg-secondary-600`,
+      primary: `bg-primary-500 text-primary-contrast hover:enabled:bg-primary-600`,
+      secondary: `bg-secondary-500 text-secondary-contrast hover:enabled:bg-secondary-600`,
     },
     outlined: {
-      primary: `border-primary-500 text-primary-500 hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50/50`,
-      secondary: `border-secondary-500 text-secondary-500 hover:border-secondary-600 hover:text-secondary-600 hover:bg-secondary-50/50`,
+      primary: `border-primary-500 text-primary-500 hover:border-primary-600 hover:text-primary-600 hover:enabled:bg-primary-50/50`,
+      secondary: `border-secondary-500 text-secondary-500 hover:border-secondary-600 hover:text-secondary-600
+        hover:enabled:bg-secondary-50/50 `,
     },
   }
 
@@ -55,6 +58,7 @@ export const Button = forwardRef<
         defaultStyle,
         sizeStyle[size],
         style[variant][color],
+        disableStyle,
         className,
       )}
       {...props}
