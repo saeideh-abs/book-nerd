@@ -1,3 +1,4 @@
 export * from './Header'
-export * from './typography'
+export * from './Footer'
+export * from './Typography'
 export * from './Button'

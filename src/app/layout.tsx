@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import GlobalStyles from '@/styles/GlobalStyles'
 import '@/styles/tailwind.css'
-import { Header, HeaderItemsType } from '@/components'
+import { Footer, Header } from '@/components'
 import HeaderBanner from '@/components/Header/HeaderBanner'
+import { HEADER_ITEMS } from '@/utils/constants'
 
 export const metadata: Metadata = {
   title: 'Book Nerd',
@@ -14,26 +15,21 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const headerItems: HeaderItemsType = [
-    { title: 'Home', route: '/' },
-    { title: 'About Us', route: '/about-us' },
-    { title: 'Contact Us', route: '/contact-us' },
-  ]
-
   return (
     <html lang="en">
       <body>
-        <div className="max-w-[2500px] h-full bg-[#f0f8ff96]">
+        <div className="flex flex-col max-w-[2500px] h-full bg-[#f0f8ff96] m-auto">
           <GlobalStyles />
-          <Header items={headerItems}>
+          <Header items={HEADER_ITEMS}>
             <HeaderBanner
               title="ipsum dolor si"
               description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed eu feugiat amet, libero ipsum enim pharetra hac. 
-            Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.`}
+                Sed eu feugiat amet, libero ipsum enim pharetra hac. 
+                Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.`}
             />
           </Header>
-          <div className="flex flex-col">{children}</div>
+          <div className="flex flex-col grow">{children}</div>
+          <Footer />
         </div>
       </body>
     </html>

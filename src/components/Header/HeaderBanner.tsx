@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { startCase } from 'lodash-es'
 import { PropsWithChildren } from 'react'
-import { Typography } from '../typography'
+import { Typography } from '../Typography'
 
 interface HeaderBannerProps {
   title: string
