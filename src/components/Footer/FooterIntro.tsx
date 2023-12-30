@@ -24,7 +24,7 @@ export const Social = () => {
   const w = 44
 
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-4 md:gap-10">
       <Image
         src="/images/social-logo/facebook.png"
         alt="facebook logo"

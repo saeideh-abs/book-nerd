@@ -21,7 +21,7 @@ const IMPORTANT_lINKS: FooterColumnItem[] = [
 export const Footer = () => {
   return (
     <div className="flex flex-col">
-      <div className="w-full h-[400px] bg-secondary-500 grid grid-cols-5 gap-20 text-secondary-contrast px-36 py-24">
+      <div className="w-full md:h-[430px] bg-secondary-500 grid md:grid-cols-5 gap-20 text-secondary-contrast px-28 lg:px-36 py-24">
         <div className="col-span-2">
           <FooterIntro />
         </div>
