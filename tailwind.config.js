@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       padding: {
-        layoutX: '4rem'
+        layoutX: '3rem'
       },
       screens: {
         '3xl': '1792px',
@@ -38,6 +38,20 @@ module.exports = {
           800: '#822f20',
           900: '#642419',
           contrast: 'white',
+        },
+        bnGray: {
+          100: '#767070',
+          200: '#969595',
+          300: '#7A7A7A',
+          400: '#8F8F8F',
+          500: '#E0E0E0',
+          600: '#CACACA',
+          700: '#C4C4C4',
+          800: '#F6F6F6',
+        },
+        bnLightBlue: {
+          50: '#F7FCFC',
+          100: '#f0f8ff'
         }
       },
     },

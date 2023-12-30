@@ -18,7 +18,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col max-w-[2500px] h-full bg-[#f0f8ff96] m-auto">
+        <div className="flex flex-col max-w-[3000px] h-full m-auto">
           <GlobalStyles />
           <Header items={HEADER_ITEMS}>
             <HeaderBanner
@@ -28,7 +28,7 @@ export default async function RootLayout({
                 Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.`}
             />
           </Header>
-          <div className="flex flex-col grow">{children}</div>
+          <div className="flex flex-col grow bg-bnLightBlue-50">{children}</div>
           <Footer />
         </div>
       </body>
