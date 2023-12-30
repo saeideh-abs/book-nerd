@@ -22,7 +22,7 @@ export const Button = forwardRef<
   ref,
 ) {
   const defaultStyle = cn(
-    `rounded-md outline-none`,
+    `rounded-md outline-none w-fit`,
     variant === 'outlined' && 'border bg-transparent',
     variant === 'solid' && 'font-medium',
   )
