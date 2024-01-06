@@ -1,6 +1,9 @@
+'use client'
+import { supabaseClient } from '@/utils/supabaseClient'
 import { CategoryItemType } from '../types'
 import Box from './Box'
 import BoxExplore from './BoxExplore'
+import { useCallback, useEffect } from 'react'
 
 export default function Categories() {
   const categoryItems: CategoryItemType[] = [
@@ -34,6 +37,18 @@ export default function Categories() {
       title: 'Science Fiction books',
     },
   ]
+
+  const getData = useCallback(async () => {
+    const { data, error, status } = await supabaseClient
+      .from('book')
+      .select('*')
+      .limit(10)
+    console.log(data, error, status)
+  }, [])
+
+  useEffect(() => {
+    getData()
+  }, [getData])
 
   return (
     <div className="grid md:grid-cols-3 gap-8 max-w-[100%] 2xl:max-w-[1500px] 3xl:max-w-[85%] p-layoutX">

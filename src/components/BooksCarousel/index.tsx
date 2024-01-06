@@ -31,7 +31,7 @@ export function BooksCarousel() {
         className="w-full"
       >
         <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
+          {Array.from({ length: 7 }).map((_, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
               <div
                 className={cn(
