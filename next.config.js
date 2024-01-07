@@ -8,9 +8,22 @@ module.exports = withTwin({
   experimental: {
     serverActions: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.gr-assets.com',
+        // port: '',
+        // pathname: '/images/S/compressed.photo.goodreads.com/books/**',
+      },
+    ],
+  },
+  // images: {
+  //   domains: ['i.gr-assets.com'],
+  // },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) =>
+    const fileLoaderRule = config.module.rules.find(rule =>
       rule.test?.test?.('.svg'),
     )
 
@@ -26,7 +39,12 @@ module.exports = withTwin({
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: [{ loader: '@svgr/webpack', options: { ref: true, dimensions: false } }],
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: { ref: true, dimensions: false },
+          },
+        ],
       },
     )
 

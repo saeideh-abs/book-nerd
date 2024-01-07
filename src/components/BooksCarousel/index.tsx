@@ -9,10 +9,14 @@ import {
   CarouselPrevious,
   Divider,
 } from '@/components'
-import { cn } from '@/utils'
 import { BooksCarouselHeader } from './BooksCarouselHeader'
+import { BookBox, BookBoxItemType } from '../BookBox'
 
-export function BooksCarousel() {
+export interface BooksCarouselProps {
+  items: BookBoxItemType[]
+}
+
+export function BooksCarousel({ items }: BooksCarouselProps) {
   return (
     <div className="flex flex-col items-center w-full gap-12 bg-bnLightBlue-100 p-layoutX">
       <BooksCarouselHeader
@@ -23,7 +27,6 @@ export function BooksCarousel() {
       <Button variant="outlined" size="sm" className="-mt-5">
         View More
       </Button>
-
       <Carousel
         opts={{
           align: 'start',
@@ -31,20 +34,12 @@ export function BooksCarousel() {
         className="w-full"
       >
         <CarouselContent>
-          {Array.from({ length: 7 }).map((_, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
-              <div
-                className={cn(
-                  'p-6 border text-center border-gray-200 bg-white rounded-sm w-[326px] h-[437px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)]',
-                )}
-              >
-                {/* <h3>My Book</h3>
-                <h3>Title</h3>
-                <h3>Sub title</h3> */}
-                <span className="text-3xl font-semibold leading-[600px]">
-                  {index + 1}
-                </span>
-              </div>
+          {items.map((item, index) => (
+            <CarouselItem
+              key={index}
+              className="md:basis-1/2 lg:basis-1/4 2xl:basis-1/5"
+            >
+              <BookBox item={item} />
             </CarouselItem>
           ))}
         </CarouselContent>

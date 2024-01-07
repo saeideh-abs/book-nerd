@@ -18,7 +18,7 @@ export const BooksCarouselHeader = ({
         <Typography
           component="h2"
           variant="displayMdSemibold"
-          className="text-xl md:whitespace-nowrap text-primary-500 md:text-4xl"
+          className="text-xl text-center md:whitespace-nowrap text-primary-500 md:text-4xl"
         >
           {title}
         </Typography>
