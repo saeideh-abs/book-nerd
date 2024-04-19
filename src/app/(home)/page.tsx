@@ -38,7 +38,11 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-10">
       <Categories />
-      <BooksCarousel items={booksData} />
+      <BooksCarousel
+        title="The Most Popular Books"
+        subTitle="Our Suggested Books"
+        items={booksData}
+      />
     </div>
   )
 }
