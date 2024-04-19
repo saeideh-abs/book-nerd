@@ -5,6 +5,7 @@ import { Typography } from '../Typography'
 import { PropsWithChildren } from 'react'
 
 export interface BookBoxItemType {
+  id: string
   title: string
   price: number | null
   authorName: string
