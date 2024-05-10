@@ -1,12 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       padding: {
-        layoutX: '3rem'
+        layoutXMd: '3rem',
+        layoutX: '1rem',
       },
       screens: {
         '3xl': '1792px',
@@ -51,8 +50,8 @@ module.exports = {
         },
         bnLightBlue: {
           50: '#F7FCFC',
-          100: '#f0f8ff'
-        }
+          100: '#f0f8ff',
+        },
       },
     },
   },

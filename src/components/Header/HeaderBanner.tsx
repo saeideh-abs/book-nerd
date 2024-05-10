@@ -31,7 +31,7 @@ export default function HeaderBanner({
         width="0"
         height="0"
         sizes="100vw"
-        className="w-[350px] h-auto"
+        className="w-0 md:w-[350px] h-auto"
         alt=""
       />
     </div>

@@ -27,7 +27,7 @@ export function BooksCarousel({
   viewMoreLink,
 }: BooksCarouselProps) {
   return (
-    <div className="flex flex-col items-center w-full gap-12 bg-bnLightBlue-100 p-layoutX">
+    <div className="flex flex-col items-center w-full gap-12 bg-bnLightBlue-100 p-layoutX md:p-layoutXMd">
       <BooksCarouselHeader title={title} subTitle={subTitle} />
 
       <Button variant="outlined" size="sm" className="-mt-5">
