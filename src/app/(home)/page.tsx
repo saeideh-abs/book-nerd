@@ -1,9 +1,6 @@
 'use client'
-import { supabaseClient } from '@/utils/supabaseClient'
-import { BooksCarousel, BooksCarouselProps } from '@/components'
+import { BooksCarousel } from '@/components'
 import Categories from './_components/Categories'
-import { useCallback, useEffect, useState } from 'react'
-import { Tables } from '@/types/database'
 import { useBooks } from '@/hooks/useBooks'
 
 const Home = () => {

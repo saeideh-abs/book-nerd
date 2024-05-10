@@ -11,7 +11,8 @@ import {
   Typography,
 } from '@/components'
 import { BooksCarouselHeader } from './BooksCarouselHeader'
-import { BookBox, BookBoxItemType } from '../BookBox'
+import { BookBox } from '../BookBox'
+import { BookBoxItemType } from '@/types'
 
 export interface BooksCarouselProps {
   items: BookBoxItemType[]

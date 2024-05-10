@@ -1,19 +1,22 @@
 'use client'
-import { cn, customImageLoader } from '@/utils'
+import { cn, customImageLoader, filterMainAuthor } from '@/utils'
 import Image from 'next/image'
 import { Typography } from '../Typography'
 import { PropsWithChildren } from 'react'
-
-export interface BookBoxItemType {
-  id: string
-  title: string
-  price: number | null
-  authorName: string
-  coverImg: string
-}
+import { Tables } from '@/types/database'
+import { BookBoxItemType } from '@/types'
 
 export interface BookBoxProps {
   item: BookBoxItemType
+}
+
+const convertAuthorsListToString = (authors: BookBoxItemType['author']) => {
+  return authors.map(
+    (author, i) =>
+      `${author.name}${
+        authors.length !== 0 && i !== authors.length - 1 ? ', ' : ''
+      }`,
+  )
 }
 
 export function BookBox({ item }: BookBoxProps) {
@@ -32,9 +35,12 @@ export function BookBox({ item }: BookBoxProps) {
         <Typography variant="textLgSemibold" className="mt-3 text-primary-500">
           {item.title}
         </Typography>
+
+        {/* authors list */}
         <Typography variant="textSmReg" className="text-bnGray-400">
-          {item.authorName}
+          {convertAuthorsListToString(filterMainAuthor(item.author))}
         </Typography>
+
         <Typography
           variant="textMdBold"
           className={cn('mt-3 text-secondary-500', !item.price && 'invisible')}

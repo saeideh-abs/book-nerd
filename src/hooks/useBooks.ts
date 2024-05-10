@@ -1,39 +1,42 @@
-import { BooksCarouselProps } from '@/components'
-import { Tables } from '@/types/database'
+import { BookBoxItemType } from '@/types'
+import { mergeAuthorAndRole } from '@/utils'
 import { supabaseClient } from '@/utils/supabaseClient'
+import { QueryData } from '@supabase/supabase-js'
 import { useCallback, useEffect, useState } from 'react'
 
+const booksQuery = supabaseClient
+  .from('book')
+  .select(`*, author (id, name), book_author (author_id, role)`)
+
+export type BooksQueryType = QueryData<typeof booksQuery>
+
 export const useBooks = () => {
-  // todo: fix the type of items
-  const [booksData, setBooksData] = useState<BooksCarouselProps['items']>([])
+  const [booksData, setBooksData] = useState<BookBoxItemType[]>([])
 
   const getData = useCallback(async () => {
-    const { data, error, status } = await supabaseClient
-      .from('book')
-      .select('*')
-      .limit(20)
+    const { data, error, status } = await booksQuery.range(0, 19)
 
-    setBooksData(formatData(data))
-    console.log(data, error, status)
+    if (error) throw error
+
+    setBooksData(formatBooks(data))
+    console.log(formatBooks(data), error, status)
   }, [])
 
   useEffect(() => {
     getData()
   }, [getData])
 
-  const formatData = (
-    data: Tables<'book'>[] | null,
-  ): BooksCarouselProps['items'] => {
-    return data
-      ? data.map((item: Tables<'book'>) => ({
-          id: item.id,
-          title: item.title ?? '',
-          price: item.price,
-          authorName: 'Julia Robert',
-          coverImg: item.cover_img,
-        }))
-      : []
-  }
-
   return [booksData]
+}
+
+const formatBooks = (data: BooksQueryType | null): BookBoxItemType[] => {
+  return data
+    ? data.map(item => ({
+        id: item.id,
+        title: item.title ?? '',
+        price: item.price,
+        author: mergeAuthorAndRole(item.author, item.book_author),
+        coverImg: item.cover_img,
+      }))
+    : []
 }
