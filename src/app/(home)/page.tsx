@@ -4,7 +4,9 @@ import Categories from './_components/Categories'
 import { useBooks } from '@/hooks/useBooks'
 
 const Home = () => {
-  const [booksData] = useBooks()
+  const { data: booksData, error } = useBooks()
+
+  if (error) console.log(error)
 
   return (
     <div className="flex flex-col items-center justify-center gap-10">
@@ -12,7 +14,7 @@ const Home = () => {
       <BooksCarousel
         title="The Most Popular Books"
         subTitle="Our Suggested Books"
-        items={booksData}
+        items={booksData ?? []}
       />
     </div>
   )

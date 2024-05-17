@@ -21,11 +21,11 @@ const IMPORTANT_lINKS: FooterColumnItem[] = [
 export const Footer = () => {
   return (
     <div className="flex flex-col">
-      <div className="w-full md:h-[430px] bg-secondary-500 grid md:grid-cols-5 gap-20 text-secondary-contrast px-10 md:px-28 lg:px-36 py-24">
+      <div className="w-full md:h-[430px] bg-secondary-500 grid md:grid-cols-5 gap-12 text-secondary-contrast px-8 md:px-20 lg:px-30 py-24">
         <div className="col-span-2">
           <FooterIntro />
         </div>
-        <div>
+        <div className="col-span-1">
           <FooterColumn title="Company" items={HEADER_ITEMS} />
         </div>
 

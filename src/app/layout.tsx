@@ -4,6 +4,7 @@ import '@/styles/tailwind.css'
 import { Footer, Header } from '@/components'
 import HeaderBanner from '@/components/Header/HeaderBanner'
 import { HEADER_ITEMS } from '@/utils/constants'
+import { QueryProvider } from '@/context/query-provider'
 
 export const metadata: Metadata = {
   title: 'Book Nerd',
@@ -20,6 +21,7 @@ export default async function RootLayout({
       <body>
         <div className="flex flex-col max-w-[3000px] h-full m-auto">
           <GlobalStyles />
+
           <Header items={HEADER_ITEMS}>
             <HeaderBanner
               title="ipsum dolor si"
@@ -28,7 +30,9 @@ export default async function RootLayout({
                 Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.`}
             />
           </Header>
-          <div className="flex flex-col grow bg-bnLightBlue-50">{children}</div>
+          <div className="flex flex-col grow bg-bnLightBlue-50">
+            <QueryProvider>{children}</QueryProvider>
+          </div>
           <Footer />
         </div>
       </body>
