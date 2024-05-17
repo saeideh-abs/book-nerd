@@ -14,7 +14,7 @@ const Home = () => {
       <BooksCarousel
         title="The Most Popular Books"
         subTitle="Our Suggested Books"
-        items={booksData ?? []}
+        items={booksData?.pages ?? []}
       />
     </div>
   )

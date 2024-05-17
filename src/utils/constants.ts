@@ -1,4 +1,6 @@
-import { HeaderItemsType } from "@/types";
+import { HeaderItemsType } from '@/types'
+
+export const PAGE_SIZE = 15
 
 export const HEADER_ITEMS: HeaderItemsType = [
   { title: 'Home', route: '/' },

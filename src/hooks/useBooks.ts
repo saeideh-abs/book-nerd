@@ -1,8 +1,8 @@
 import { BookBoxItemType } from '@/types'
-import { mergeAuthorAndRole } from '@/utils'
+import { getFromAndTo, mergeAuthorAndRole } from '@/utils'
 import { supabaseClient } from '@/utils/supabaseClient'
 import { QueryData } from '@supabase/supabase-js'
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 export const booksQuery = supabaseClient
   .from('book')
@@ -11,17 +11,22 @@ export const booksQuery = supabaseClient
 export type BooksQueryType = QueryData<typeof booksQuery>
 
 export function useBooks() {
-  const res = useQuery({
+  return useInfiniteQuery({
     queryKey: ['books'],
-    queryFn: async () => {
-      const { data, error } = await booksQuery.range(0, 19)
+    queryFn: async ({ pageParam = 0 }) => {
+      const [from, to] = getFromAndTo(pageParam)
+      const { data, error } = await booksQuery.range(from, to)
 
       if (error) throw error
 
       return formatBooks(data)
     },
+    select: data => ({
+      pages: [...data.pages.flat()],
+      pageParams: [...data.pageParams],
+    }),
+    getNextPageParam: (_, pages) => pages.length,
   })
-  return res
 }
 
 export const formatBooks = (data: BooksQueryType | null): BookBoxItemType[] => {
@@ -49,3 +54,14 @@ export const formatBooks = (data: BooksQueryType | null): BookBoxItemType[] => {
 //   }, [getData])
 //   return [booksData]
 // }
+
+// return useQuery({
+//   queryKey: ['books'],
+//   queryFn: async () => {
+//     const { data, error } = await booksQuery.range(20, 29)
+
+//     if (error) throw error
+
+//     return formatBooks(data)
+//   },
+// })

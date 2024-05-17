@@ -2,6 +2,7 @@ import { BooksQueryType } from '@/hooks/useBooks'
 import { BookBoxItemType } from '@/types'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { PAGE_SIZE } from './constants'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -35,3 +36,10 @@ export const mergeAuthorAndRole = (
     ...t1,
     ...{ role: a2.find(t2 => t2.author_id === t1.id)?.role ?? null },
   }))
+
+export function getFromAndTo(page: number) {
+  const from = page === 0 ? page * PAGE_SIZE : page * PAGE_SIZE
+  const to = from + PAGE_SIZE - 1
+
+  return [from, to]
+}
