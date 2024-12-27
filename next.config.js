@@ -3,11 +3,11 @@ const withTwin = require('./withTwin.js')
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = withTwin({
+module.exports = {
   reactStrictMode: true,
-  experimental: {
-    serverActions: true,
-  },
+  // experimental: {
+  //   serverActions: true,
+  // },
   images: {
     remotePatterns: [
       {
@@ -53,4 +53,4 @@ module.exports = withTwin({
 
     return config
   },
-})
+}

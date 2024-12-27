@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import GlobalStyles from '@/styles/GlobalStyles'
+// import GlobalStyles from '@/styles/GlobalStyles'
 import '@/styles/tailwind.css'
 import { Footer, Header } from '@/components'
 import HeaderBanner from '@/components/Header/HeaderBanner'
@@ -20,7 +20,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <div className="flex flex-col max-w-[3000px] h-full m-auto">
-          <GlobalStyles />
+          {/* <GlobalStyles /> */}
 
           <Header items={HEADER_ITEMS}>
             <HeaderBanner
