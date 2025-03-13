@@ -2,6 +2,18 @@ import { PropsWithChildren } from 'react'
 import HeaderItems from './HeaderItems'
 import { HeaderItemType } from './types'
 import { style } from './style'
+import { getTranslations } from 'next-intl/server'
+import { HeaderItemsType } from './types'
+
+export const getHeaderItems = async (): Promise<HeaderItemsType> => {
+  const t = await getTranslations()
+
+  return [
+    { title: t('home'), route: '/' },
+    { title: t('aboutUs'), route: '#' },
+    { title: t('contactUs'), route: '#' },
+  ]
+}
 
 export interface HeaderProps {
   items: HeaderItemType[]
@@ -10,15 +22,12 @@ export interface HeaderProps {
 export function Header({ items, children }: PropsWithChildren & HeaderProps) {
   return (
     <div>
-      <Container>
+      <header className={style.container}>
         <HeaderItems items={items} />
-      </Container>
+      </header>
       {children}
     </div>
   )
 }
 
-const Container = ({ children }: PropsWithChildren) => {
-  return <header className={style.container}>{children}</header>
-}
 export * from './types'

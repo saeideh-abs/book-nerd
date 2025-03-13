@@ -1,9 +1,9 @@
 'use client'
+import { useTranslations } from 'next-intl'
 import { cn, customImageLoader, filterMainAuthor } from '@/utils'
 import Image from 'next/image'
 import { Typography } from '../Typography'
 import { PropsWithChildren } from 'react'
-import { Tables } from '@/types/database'
 import { BookBoxItemType } from '@/types'
 
 export interface BookBoxProps {
@@ -20,6 +20,8 @@ const convertAuthorsListToString = (authors: BookBoxItemType['author']) => {
 }
 
 export function BookBox({ item }: BookBoxProps) {
+  const t = useTranslations()
+
   return (
     <Card>
       <Image
@@ -45,7 +47,7 @@ export function BookBox({ item }: BookBoxProps) {
           variant="textMdBold"
           className={cn('mt-3 text-secondary-500', !item.price && 'invisible')}
         >
-          {item.price ? `$${item.price}` : 'unknown'}
+          {item.price ? `$${item.price}` : t('unknown')}
         </Typography>
       </div>
     </Card>

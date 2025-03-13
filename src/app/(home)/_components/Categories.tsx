@@ -1,37 +1,40 @@
+import { getTranslations } from 'next-intl/server'
 import { CategoryItemType } from '../types'
 import Box from './Box'
 import BoxExplore from './BoxExplore'
 
-export default function Categories() {
+export default async function Categories() {
+  const t = await getTranslations()
+
   const categoryItems: CategoryItemType[] = [
     {
       type: 'photo',
       imgAddress: '/images/box-books.jpg',
-      title: 'Romance Books',
+      title: t('romanceBooks'),
     },
     {
       type: 'text',
-      title: 'Explore our Top Categories',
+      title: t('exploreTopCategories'),
     },
     {
       type: 'photo',
       imgAddress: '/images/box-library.jpg',
-      title: 'Historical Books',
+      title: t('historicalBooks'),
     },
     {
       type: 'photo',
       imgAddress: '/images/box-laptop-1.jpg',
-      title: 'Psychology Books',
+      title: t('psychologyBooks'),
     },
     {
       type: 'photo',
       imgAddress: '/images/box-laptop-2.jpg',
-      title: 'Childrens Books',
+      title: t('childrensBooks'),
     },
     {
       type: 'photo',
       imgAddress: '/images/box-laptop-3.jpg',
-      title: 'Science Fiction books',
+      title: t('scienceFictionBooks'),
     },
   ]
 

@@ -19,6 +19,7 @@
     "clsx": "^2.0.0",
     "embla-carousel-react": "^8.0.0-rc17",
     "next": "^14.2.13",
+    "next-intl": "^3.26.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.0.0"

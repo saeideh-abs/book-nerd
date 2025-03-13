@@ -1,9 +1,12 @@
-const withTwin = require('./withTwin.js')
+const createNextIntlPlugin = require('next-intl/plugin')
+
+const withNextIntl = createNextIntlPlugin()
+// const withTwin = require('./withTwin.js')
 
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = {
+module.exports = withNextIntl({
   reactStrictMode: true,
   // experimental: {
   //   serverActions: true,
@@ -53,4 +56,4 @@ module.exports = {
 
     return config
   },
-}
+})

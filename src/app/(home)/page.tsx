@@ -1,23 +1,11 @@
-'use client'
-import { BooksCarousel } from '@/components'
 import Categories from './_components/Categories'
-import { useBooks } from '@/hooks/useBooks'
+import CarouselWrapper from './carousel-wrapper'
 
-const Home = () => {
-  const { data: booksData, error } = useBooks()
-
-  if (error) console.log(error)
-
+export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center gap-10">
       <Categories />
-      <BooksCarousel
-        title="The Most Popular Books"
-        subTitle="Our Suggested Books"
-        items={booksData?.pages ?? []}
-      />
+      <CarouselWrapper />
     </div>
   )
 }
-
-export default Home

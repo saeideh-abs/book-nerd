@@ -1,6 +1,9 @@
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
-export const FooterIntro = () => {
+export const FooterIntro = async () => {
+  const t = await getTranslations()
+
   return (
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-3">
@@ -10,42 +13,40 @@ export const FooterIntro = () => {
           width="83"
           height="87"
         />
-        <p className="text-white">
-          Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
+        <p className="text-white">{t('footerDescription')}</p>
       </div>
       <Social />
     </div>
   )
 }
 
-export const Social = () => {
+export const Social = async () => {
+  const t = await getTranslations('social')
   const w = 44
 
   return (
     <div className="flex justify-between gap-2">
       <Image
         src="/images/social-logo/facebook.png"
-        alt="facebook logo"
+        alt={t('facebookLogo')}
         width={w}
         height={w}
       />
       <Image
         src="/images/social-logo/linkedin.png"
-        alt="linkedin logo"
+        alt={t('linkedinLogo')}
         width={w}
         height={w}
       />
       <Image
         src="/images/social-logo/twitter.png"
-        alt="twitter logo"
+        alt={t('twitterLogo')}
         width={w}
         height={w}
       />
       <Image
         src="/images/social-logo/youtube.png"
-        alt="youtube logo"
+        alt={t('youtubeLogo')}
         width={w}
         height={w}
       />

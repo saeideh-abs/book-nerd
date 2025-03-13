@@ -1,14 +1,21 @@
 import { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages, getTranslations } from 'next-intl/server'
+import '@/utils/strings'
 // import GlobalStyles from '@/styles/GlobalStyles'
-import '@/styles/tailwind.css'
 import { Footer, Header } from '@/components'
 import HeaderBanner from '@/components/Header/HeaderBanner'
-import { HEADER_ITEMS } from '@/utils/constants'
+import { getHeaderItems } from '@/components/Header'
 import { QueryProvider } from '@/context/query-provider'
+import '@/styles/tailwind.css'
 
-export const metadata: Metadata = {
-  title: 'Book Nerd',
-  description: '',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations()
+
+  return {
+    title: t('bookNerd').toTitleCase(),
+    description: '',
+  }
 }
 
 export default async function RootLayout({
@@ -16,25 +23,31 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <div className="flex flex-col max-w-[3000px] h-full m-auto">
-          {/* <GlobalStyles /> */}
+  const locale = await getLocale()
+  const messages = await getMessages()
 
-          <Header items={HEADER_ITEMS}>
-            <HeaderBanner
-              title="ipsum dolor si"
-              description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed eu feugiat amet, libero ipsum enim pharetra hac. 
-                Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.`}
-            />
-          </Header>
-          <div className="flex flex-col grow bg-bnLightBlue-50">
-            <QueryProvider>{children}</QueryProvider>
+  const t = await getTranslations()
+  const headerItems = await getHeaderItems()
+
+  return (
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          <div className="flex flex-col max-w-[3000px] h-full m-auto">
+            {/* <GlobalStyles /> */}
+
+            <Header items={headerItems}>
+              <HeaderBanner
+                title={t('headerTitle')}
+                description={t('headerDescription')}
+              />
+            </Header>
+            <div className="flex flex-col grow bg-bnLightBlue-50">
+              <QueryProvider>{children}</QueryProvider>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
