@@ -1,5 +1,5 @@
 import { BooksQueryType } from '@/hooks/useBooks'
-import { BookBoxItemType } from '@/types'
+import { IBookBoxItem } from '@/types'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { PAGE_SIZE } from './constants'
@@ -21,13 +21,14 @@ export const customImageLoader = ({
   return `${src}?w=${width}&q=${quality || 75}`
 }
 
-export const filterMainAuthor = (data: BookBoxItemType['author']) => {
+export const filterMainAuthor = (data: IBookBoxItem['author']) => {
   return data.filter(
     item => item.role === null || item.role === 'goodreads author',
   )
 }
 
 type AuthorType = Pick<BooksQueryType[number], 'book_author' | 'author'>
+// TODO: move to a better place?
 export const mergeAuthorAndRole = (
   a1: AuthorType['author'],
   a2: AuthorType['book_author'],

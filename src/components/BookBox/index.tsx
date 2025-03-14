@@ -4,13 +4,13 @@ import { cn, customImageLoader, filterMainAuthor } from '@/utils'
 import Image from 'next/image'
 import { Typography } from '../Typography'
 import { PropsWithChildren } from 'react'
-import { BookBoxItemType } from '@/types'
+import { IBookBoxItem } from '@/types'
 
 export interface BookBoxProps {
-  item: BookBoxItemType
+  item: IBookBoxItem
 }
 
-const convertAuthorsListToString = (authors: BookBoxItemType['author']) => {
+const convertAuthorsListToString = (authors: IBookBoxItem['author']) => {
   return authors.map(
     (author, i) =>
       `${author.name}${

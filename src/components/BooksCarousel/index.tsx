@@ -12,11 +12,11 @@ import {
 } from '@/components'
 import { BooksCarouselHeader } from './BooksCarouselHeader'
 import { BookBox } from '../BookBox'
-import { BookBoxItemType } from '@/types'
+import { IBookBoxItem } from '@/types'
 import { useTranslations } from 'next-intl'
 
 export interface BooksCarouselProps {
-  items: BookBoxItemType[]
+  items: IBookBoxItem[]
   title: string
   subTitle?: string
   viewMoreLink?: string

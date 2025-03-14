@@ -1,8 +1,9 @@
-import { BookBoxItemType } from '@/types'
-import { getFromAndTo, mergeAuthorAndRole } from '@/utils'
+import { BaseBookBoxItem } from '@/models/BaseBookBoxItem'
+import { IBookBoxItem } from '@/types'
+import { getFromAndTo } from '@/utils'
 import { supabaseClient } from '@/utils/supabaseClient'
 import { QueryData } from '@supabase/supabase-js'
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 export const booksQuery = supabaseClient
   .from('book')
@@ -19,7 +20,7 @@ export function useBooks() {
 
       if (error) throw error
 
-      return formatBooks(data)
+      return transformBooks(data)
     },
     select: data => ({
       pages: [...data.pages.flat()],
@@ -29,20 +30,26 @@ export function useBooks() {
   })
 }
 
-export const formatBooks = (data: BooksQueryType | null): BookBoxItemType[] => {
-  return data
-    ? data.map(item => ({
-        id: item.id,
-        title: item.title ?? '',
-        price: item.price,
-        author: mergeAuthorAndRole(item.author, item.book_author),
-        coverImg: item.cover_img,
-      }))
-    : []
+// TODO: move to a better place?
+export const transformBooks = (data: BooksQueryType | null): IBookBoxItem[] => {
+  return data ? data.map(item => new BaseBookBoxItem(item)) : []
 }
 
+/********** old transformBooks */
+// const transformBooks = (data: BooksQueryType | null): BookBoxItemType[] => {
+//   return data
+//     ? data.map(item => ({
+//         id: item.id,
+//         title: item.title ?? '',
+//         price: item.price,
+//         author: mergeAuthorAndRole(item.author, item.book_author),
+//         coverImg: item.cover_img,
+//       }))
+//     : []
+// }
+
 // export const useBooks = () => {
-//   const [booksData, setBooksData] = useState<BookBoxItemType[]>([])
+//   const [booksData, setBooksData] = useState<IBookBoxItem[]>([])
 //   const getData = useCallback(async () => {
 //     const { data, error, status } = await booksQuery.range(0, 19)
 //     if (error) throw error
