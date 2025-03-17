@@ -1,9 +1,13 @@
 1- localization -> done
-1.5- data model and transformation
-2- infinite loading and virtualization
+2- data model and transformation -> done
 3- commitlint -> done
-4- pwa
-5- ci/cd - docker
-6- night mode
-7- storybook
-8- book details page
+4- book details page
+5- tests
+6- pwa
+7- ci/cd - docker
+8- infinite loading and virtualization
+9- night mode
+10- storybook
+
+**_ activate copilot
+_** connect gpt to cursor
