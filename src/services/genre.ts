@@ -1,5 +1,6 @@
 import { supabaseClient } from '@/utils/supabaseClient'
 
+// TODO: remove book_genre obj from results
 export const fetchGenresByBookIdQuery = (bookId: string) => {
   return supabaseClient
     .from('genre')

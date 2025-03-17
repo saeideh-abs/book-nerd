@@ -11,6 +11,9 @@ module.exports = {
         '3xl': '1792px',
         '4xl': '2048px',
       },
+      minWidth: {
+        bookBox: '260px',
+      },
       colors: {
         primary: {
           50: '#e8ecef',

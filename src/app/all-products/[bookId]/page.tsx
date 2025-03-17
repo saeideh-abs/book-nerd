@@ -23,7 +23,7 @@ export default function BookDetails({
     <div className="flex flex-col md:flex-row gap-10 p-layoutXMd">
       {bookData ? (
         <>
-          <div className="md:w-1/4">
+          <div className="min-w-[260px]">
             {
               <BookBox
                 className="h-auto w-fit md:w-full m-auto hover:cursor-auto"
@@ -32,7 +32,7 @@ export default function BookDetails({
             }
           </div>
 
-          <div className="md:w-3/4">
+          <div>
             <div className="flex flex-col gap-3">
               <Typography
                 variant="displaySmSemibold"
