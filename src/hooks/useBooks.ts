@@ -1,26 +1,18 @@
 import { BaseBookBoxItem } from '@/models/BaseBookBoxItem'
-import { IBookBoxItem } from '@/types'
+import { fetchBooksQuery } from '@/services/book'
 import { getFromAndTo } from '@/utils'
-import { supabaseClient } from '@/utils/supabaseClient'
-import { QueryData } from '@supabase/supabase-js'
 import { useInfiniteQuery } from '@tanstack/react-query'
-
-export const booksQuery = supabaseClient
-  .from('book')
-  .select(`*, author (id, name), book_author (author_id, role)`)
-
-export type BooksQueryType = QueryData<typeof booksQuery>
 
 export function useBooks() {
   return useInfiniteQuery({
     queryKey: ['books'],
     queryFn: async ({ pageParam = 0 }) => {
       const [from, to] = getFromAndTo(pageParam)
-      const { data, error } = await booksQuery.range(from, to)
+      const { data, error } = await fetchBooksQuery.range(from, to)
 
       if (error) throw error
 
-      return transformBooks(data)
+      return data ? data.map(item => new BaseBookBoxItem(item)) : []
     },
     select: data => ({
       pages: [...data.pages.flat()],
@@ -30,13 +22,8 @@ export function useBooks() {
   })
 }
 
-// TODO: move to a better place?
-export const transformBooks = (data: BooksQueryType | null): IBookBoxItem[] => {
-  return data ? data.map(item => new BaseBookBoxItem(item)) : []
-}
-
 /********** old transformBooks */
-// const transformBooks = (data: BooksQueryType | null): BookBoxItemType[] => {
+// const transformBooks = (data: fetchBooksQueryType | null): BookBoxItemType[] => {
 //   return data
 //     ? data.map(item => ({
 //         id: item.id,
@@ -51,7 +38,7 @@ export const transformBooks = (data: BooksQueryType | null): IBookBoxItem[] => {
 // export const useBooks = () => {
 //   const [booksData, setBooksData] = useState<IBookBoxItem[]>([])
 //   const getData = useCallback(async () => {
-//     const { data, error, status } = await booksQuery.range(0, 19)
+//     const { data, error, status } = await fetchBooksQuery.range(0, 19)
 //     if (error) throw error
 //     setBooksData(formatBooks(data))
 //     console.log(formatBooks(data), error, status)
@@ -65,7 +52,7 @@ export const transformBooks = (data: BooksQueryType | null): IBookBoxItem[] => {
 // return useQuery({
 //   queryKey: ['books'],
 //   queryFn: async () => {
-//     const { data, error } = await booksQuery.range(20, 29)
+//     const { data, error } = await fetchBooksQuery.range(20, 29)
 
 //     if (error) throw error
 

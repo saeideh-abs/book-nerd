@@ -1,6 +1,9 @@
 'use client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { PropsWithChildren } from 'react'
+// import strings to be available in client-side components
+// Note: a better approach is creating a utility function
+import '@/utils/strings'
 
 const queryClient = new QueryClient({
   defaultOptions: {

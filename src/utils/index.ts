@@ -1,4 +1,4 @@
-import { BooksQueryType } from '@/hooks/useBooks'
+import { BooksQueryType } from '@/services/book'
 import { IBookBoxItem } from '@/types'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
@@ -37,6 +37,19 @@ export const mergeAuthorAndRole = (
     ...t1,
     ...{ role: a2.find(t2 => t2.author_id === t1.id)?.role ?? null },
   }))
+
+export const convertAuthorsListToString = (
+  authors: IBookBoxItem['author'],
+): string => {
+  return authors
+    .map(
+      (author, i) =>
+        `${author.name}${
+          authors.length !== 0 && i !== authors.length - 1 ? ',' : ''
+        }`,
+    )
+    .join(' ')
+}
 
 export function getFromAndTo(page: number) {
   const from = page === 0 ? page * PAGE_SIZE : page * PAGE_SIZE

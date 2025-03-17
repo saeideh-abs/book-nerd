@@ -1,5 +1,5 @@
 import { Tables } from './database'
-import { BooksQueryType } from '@/hooks/useBooks'
+import { BooksQueryType } from '@/services/book'
 
 export type { HeaderItemsType } from '@/components'
 
@@ -10,6 +10,9 @@ export interface IBookBoxItem {
   // author: Tables<'author'>[]
   author: (Tables<'author'> & Pick<Tables<'book_author'>, 'role'>)[]
   coverImg: string
+  description: string
+  pages: number | null
+  bookFormat: string | null
 }
 
 export type RemoteBookBoxItem = BooksQueryType[number]

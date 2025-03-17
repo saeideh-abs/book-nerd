@@ -1,6 +1,11 @@
 'use client'
 import { useTranslations } from 'next-intl'
-import { cn, customImageLoader, filterMainAuthor } from '@/utils'
+import {
+  cn,
+  convertAuthorsListToString,
+  customImageLoader,
+  filterMainAuthor,
+} from '@/utils'
 import Image from 'next/image'
 import { Typography } from '../Typography'
 import { PropsWithChildren } from 'react'
@@ -8,22 +13,14 @@ import { IBookBoxItem } from '@/types'
 
 export interface BookBoxProps {
   item: IBookBoxItem
+  className?: string
 }
 
-const convertAuthorsListToString = (authors: IBookBoxItem['author']) => {
-  return authors.map(
-    (author, i) =>
-      `${author.name}${
-        authors.length !== 0 && i !== authors.length - 1 ? ', ' : ''
-      }`,
-  )
-}
-
-export function BookBox({ item }: BookBoxProps) {
+export function BookBox({ item, className }: BookBoxProps) {
   const t = useTranslations()
 
   return (
-    <Card>
+    <Card className={className}>
       <Image
         src={item.coverImg}
         width={0}
@@ -54,12 +51,16 @@ export function BookBox({ item }: BookBoxProps) {
   )
 }
 
-const Card = ({ children }: PropsWithChildren) => {
+const Card = ({
+  children,
+  className,
+}: PropsWithChildren & { className?: string }) => {
   return (
     <div
       className={cn(
         `flex flex-col items-center p-6 border text-center border-gray-200 bg-white rounded-sm 
           w-full h-full shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] hover:opacity-50 hover:cursor-pointer`,
+        className,
       )}
     >
       {children}
