@@ -1,7 +1,7 @@
 'use client'
 import { useTranslations } from 'next-intl'
 import { BooksCarousel } from '@/components'
-import { useBooks } from '@/hooks/useBooks'
+import { useBooks } from '@/services/hooks/useBooks'
 
 export default function CarouselWrapper() {
   const t = useTranslations()

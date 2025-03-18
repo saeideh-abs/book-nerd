@@ -2,8 +2,8 @@
 import { Divider, Typography } from '@/components'
 import { BookBox } from '@/components/BookBox'
 import Chip from '@/components/Chip'
-import { useBook } from '@/hooks/useBook'
-import { useBookGenre } from '@/hooks/useBookGenre'
+import { useBook } from '@/services/hooks/useBook'
+import { useBookGenre } from '@/services/hooks/useBookGenre'
 import { convertAuthorsListToString, filterMainAuthor } from '@/utils'
 import { useTranslations } from 'next-intl'
 

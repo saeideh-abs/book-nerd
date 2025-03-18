@@ -3,9 +3,8 @@ import { useTranslations } from 'next-intl'
 import { Button } from '@/components'
 import { BookBox } from '@/components/BookBox'
 import { BooksCarouselHeader } from '@/components/BooksCarousel/BooksCarouselHeader'
-import { useBooks } from '@/hooks/useBooks'
+import { useBooks } from '@/services/hooks/useBooks'
 import Link from 'next/link'
-import { useBook } from '@/hooks/useBook'
 import { routes } from '../routes'
 
 export default function AllProducts() {
