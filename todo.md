@@ -1,7 +1,7 @@
 1- localization -> done
 2- data model and transformation -> done
 3- commitlint -> done
-4- book details page
+4- book details page -> done
 5- tests
 6- pwa
 7- ci/cd - docker
