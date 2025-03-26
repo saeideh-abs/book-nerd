@@ -11,3 +11,4 @@
 
 **_ activate copilot -> done
 _** connect gpt to cursor
+\*\*- checkout the prettier configs
