@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookDetails renders BookDetails page correctly 1`] = `
+<div>
+  <div
+    class="flex flex-col md:flex-row gap-10 p-layoutXMd"
+  >
+    <div
+      class="min-w-[260px]"
+    >
+      <div
+        class="flex flex-col items-center p-6 border text-center border-gray-200 bg-white rounded-sm shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] hover:opacity-50 h-auto w-fit md:w-full m-auto hover:cursor-auto"
+      >
+        <img
+          alt=""
+          class="w-[200px] h-auto"
+          data-nimg="1"
+          decoding="async"
+          height="0"
+          src=""
+          style="color: transparent;"
+          width="0"
+        />
+        <div
+          class="flex flex-col justify-end grow"
+        >
+          <div
+            class="text-[1.125rem] font-semibold leading-[1.75rem] mt-3 text-primary-500"
+          >
+            Test Book
+          </div>
+          <div
+            class="text-[0.875rem] font-normal leading-[1.25rem] text-bnGray-400"
+          >
+            Test Author
+          </div>
+          <div
+            class="text-[1rem] font-bold leading-[1.5rem] mt-3 text-secondary-500 invisible"
+          >
+            unknown
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="flex flex-col gap-3"
+      >
+        <div
+          class="text-[1.875rem] font-semibold leading-[2.375rem] text-primary-500"
+        >
+          Test Book
+        </div>
+        <div
+          class="text-[1.125rem] font-normal leading-[1.75rem] text-bnGray-400"
+        >
+          Test Author
+        </div>
+        <div
+          class="text-[0.875rem] font-normal leading-[1.25rem] text-bnGray-400"
+        >
+          200 pages, 
+          Paperback
+        </div>
+        <div
+          class="flex flex-wrap gap-2"
+        >
+          <div
+            class="px-2 py-1 rounded-md bg-secondary-50 text-secondary-600 text-xs font-medium"
+          >
+            fiction
+          </div>
+          <div
+            class="px-2 py-1 rounded-md bg-secondary-50 text-secondary-600 text-xs font-medium"
+          >
+            adventure
+          </div>
+        </div>
+        <div
+          class="w-full h-[1px] bg-bnGray-500 my-3"
+        />
+        <div
+          class="text-[1rem] font-normal leading-[1.5rem] text-primary-500"
+        >
+          Test description
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
